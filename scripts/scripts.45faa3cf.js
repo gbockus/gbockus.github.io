@@ -1,0 +1,1 @@
+"use strict";angular.module("gordonbockusApp",["ngAnimate","ngCookies","ngSanitize"]),angular.module("gordonbockusApp").controller("MainCtrl",["$scope",function(a){a.awesomeThings=["HTML5 Boilerplate","AngularJS","Karma"]}]);
