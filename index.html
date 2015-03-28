@@ -628,6 +628,13 @@ var lastElement = angular.element($0);
 //Gives you what is in your scope(functions, variables...)
 lastElement.scope();
 					</code></pre>
+					<p> Get a handle on the bootstrapped element</p>
+					<pre><code data-trim contenteditabled>
+					angular.element(document.body)
+					  .injector()
+					  .get('$http')({method: 'POST', url: '/post/ajax/stuff'})
+					    .then(function(result) {console.log(result);});
+					</code></pre>
 					<aside class="notes">
 					</aside>
 				</section>
