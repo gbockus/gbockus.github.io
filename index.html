@@ -403,6 +403,56 @@ app.directive('superwoman', [function(){
 						<a href="http://jsfiddle.net/yonet3d/2pk4c2eo/15/" target="_blank">A Better Way</a>
 					</section>
 
+					<section>
+					  <h2>Simpler directive with controller</h2>
+					  <pre><code data-trim contenteditable>
+angular.module('directives.searchbutton', [])
+  /**
+   * Controller used to drive the searchbutton directive.
+   */
+  .controller('SearchButtonCtrl', function($scope) {
+
+    // Clear the current search property.
+    $scope.clearSearch = function() {
+      $scope.query = '';
+    };
+
+  })
+  .directive('searchbutton', function() {
+    return {
+      template: 
+      /* should be a string */
+ <form ng-submit="search()">
+  <div class="input-group stab-search-button">
+    <input type="search" class="form-control stab-search-text" placeholder="{{ 'SEARCH_EMAIL' | i18n }}"
+           ng-model="query"
+           ng-focus="focus=true"
+           ng-blur="focus=false">
+      <span class="stab-search-close icon-circle-close"
+            ng-show="query != ''"
+            ng-click="cancel()"></span>
+      <span class="input-group-btn">
+      <button class="btn btn-default icon-search-white stab-btn-icon hidden-xs" type="button"
+              ng-disabled="query == '' || query.length <= 2"
+              ng-click="search()">
+      </button>
+    </span>
+  </div>
+</form>
+/* end of should be a string */,
+      scope: {
+        query: '=query',
+        focus: '=focus',
+        blur: '=blur',
+        search: '&onSearch',
+        cancel: '&cancelSearch'
+      },
+      controller: 'SearchButtonCtrl'
+    };
+  });
+					  </code></pre>
+					</section>
+
 					
 				</section>
 				<!-- /Directives -->
@@ -584,6 +634,7 @@ lastElement.scope();
 				<section>
 					<h2>More Resources</h2>
 					<ul>
+						<li><a href="https://docs.angularjs.org/tutorial" target="_blank">Angular tutorial</a></li>
 						<li><a href="https://egghead.io/" target="_blank">EggHead.io</a></li>
 						<li><a href="https://docs.angularjs.org/api" target="_blank">Angular API Docs</a></li>
 						<li><a href="http://www.yearofmoo.com/" target="_blank">Year of Moo</a></li>
