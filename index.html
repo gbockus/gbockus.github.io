@@ -450,6 +450,13 @@ angular.module('directives.searchbutton', [])
       controller: 'SearchButtonCtrl'
     };
   });
+  /* example usage */
+  <div searchbutton
+       data-query="data.searchTerm"
+       data-on-search="doSearch()"
+       data-cancel-search="exitSearch()"
+       data-focus="data.searchFocus">
+  </div>
 					  </code></pre>
 					</section>
 
